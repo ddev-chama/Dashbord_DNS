@@ -1,6 +1,5 @@
 $(document).ready(function () {
 //Hide Form
-    $('.group_1').hide();
     $('.group_2').hide();
     $('.group_3').hide();
     $('.group_4').hide();
@@ -82,7 +81,6 @@ $(document).ready(function () {
     });
     //Get Date
     $('.get_date').click(function (e) {
-        $('.show_form_1').removeClass("col-lg-12").addClass("col-lg-3");
         $('.show_form_2').show("fast");
         $('.show_form_3').show("fast");
         $('.show_form_4').show("fast");
@@ -90,7 +88,7 @@ $(document).ready(function () {
             title: '<strong>Submit Success</strong>',
             message: 'You can comeback to edit again '
         },{
-            delay: 10,
+            delay: 3,
             type: 'success'
         })
        $( ".date_assessment" ).empty();
