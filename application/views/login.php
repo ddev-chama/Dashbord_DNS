@@ -14,7 +14,6 @@
   </style>
   </head>
   <body>
-  <?echo date('d-m-y');?>
     <div class="login-form">
       <form action="<?php echo site_url('Home/login'); ?>" method="post">
         <div class="top">

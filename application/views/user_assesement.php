@@ -47,7 +47,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href=# class="simple-text">
-                    DNS
+                    DNS <?php echo $member["user"]?>
                 </a>
             </div>
 

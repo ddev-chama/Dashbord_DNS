@@ -5,9 +5,6 @@ class Home extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        
-        //load model
-        $this->load->model('home_model');
     }
         
     public function index()
@@ -17,20 +14,59 @@ class Home extends CI_Controller {
         $this->load->view('login');
         //load view and pass the data
     }
-    public function login()  
+    //News login
+    public function login()
     {
-        $data['member'] = $this->home_model->get_member();
+        $this->load->model("");  
+        $this->load->library('form_validation');  
+        $this->form_validation->set_rules("user", "User Name", 'callback_username_check');  
+        $this->form_validation->set_rules("password", "Password", 'required|alpha');  
+        if($this->form_validation->run())  
+           {  
+                //true  
+               
+                $data = array(  
+                     "user"     =>$this->input->post("user"),  
+                     "password" =>$this->input->post("password")  
+                );  
+                ///check form_login
+                $this->home_model->login_checker($data);
+                
+                if ( ! $data["dd"] = $this->home_model->login_checker() ) {    
+                    $data['error'] = 'Your Account is Invalid';
+                    $this->load->view('test',$data);  
+                }  
+                else{  
+                      
+                    $this->load->view('test',$data );  
+                }
+
+           }  
+           else  
+           {  
+                //false  
+                $this->index();  
+           }  
+    }
+    //old login
+    public function dd_login()  
+    {   
+        //load model
+        $this->load->model('home_model');
         $user = $this->input->post('user');  
         $pass = $this->input->post('pass');  
-        if ($user=='sushi' && $pass=='123')   
+        $data['get_member'] = $this->home_model->get_member();
+        
+        
+        if ($user=='earth' && $pass=='123456')   
         {  
             //declaring session  
             $this->session->set_userdata(array('user'=>$user));  
-            $this->load->view('user_assesement');
+            $this->load->view('test');  
         }  
         else{  
             $data['error'] = 'Your Account is Invalid';  
-            $this->load->view('login');  
+            $this->load->view('login',$data);  
         }  
     }
     public function logout()
