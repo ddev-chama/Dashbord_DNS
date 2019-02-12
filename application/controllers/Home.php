@@ -17,16 +17,15 @@ class Home extends CI_Controller {
         //load view and pass the data
     }
     public function login()  
-    {
-        $data['member'] = $this->home_model->get_member();
-        $user = $this->input->post('user');  
+    {   $user = $this->input->post('user');  
         $pass = $this->input->post('pass');  
+        $data['member'] = $this->home_model->get_member($user,$pass);
+        
         if ($user=='sushi' && $pass=='123')   
         {  
             //declaring session  
             $this->session->set_userdata(array('user'=>$user));  
             
-           $this->user_assesement();
         }  
         else{  
             $data['error'] = 'Your Account is Invalid';  
@@ -39,14 +38,5 @@ class Home extends CI_Controller {
         $this->session->sess_destroy();
         $this->load->view('login');  
         
-    }
-    public function histoy()
-    {
-        $history = $this->load->view('history', '', true);
-    }
-    public function user_assesement()
-    {
-        $this->load->view('user_assesement'); 
-        $assessment = $this->load->view('assessment', '', true);
     }
 }

@@ -6,9 +6,13 @@ class home_model extends CI_Model {
         $this->load->database();
     }
     
-    public function get_member()
+    public function get_member($u,$p)
     {
-        $query = $this->db->get('member');
+       $this->db->select('*');
+       $this->db->form('member');
+       $this->db->where('user=',$u);
+       $this->db->where('password=',$p);
+       $query=$this->db->get();
         if($query->num_rows() > 0){
             $result = $query->result_array();
             return $result;
