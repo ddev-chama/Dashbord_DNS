@@ -53,7 +53,7 @@ $(document).ready(function () {
                 $('.group_3').hide();   
                 $('.group_4').hide();  
             }
-        else{ $('.graph').show();}        
+        else{ $('.group_1').show("fast");}        
         $('.group_2').slideToggle();
     });
     $('.show_form_3').click(function (e) { 
@@ -64,18 +64,18 @@ $(document).ready(function () {
             $('.group_2').hide();   
             $('.group_4').hide();  
         }
-        else{ $('.graph').show();}        
+        else{ $('.group_1').show("fast");}        
         $('.group_3').slideToggle();
     });
     $('.show_form_4').click(function (e) { 
         if($(".group_4").is(":hidden"))
         {
-            $('.graph').hide();
-            $('.group_1').hide();    
+            $('.graph').hide(); 
+            $('.group_1').hide();   
             $('.group_2').hide();   
             $('.group_3').hide();  
         }
-        else{ $('.graph').show();}        
+        else{ $('.group_1').show("fast");}        
         $('.group_4').slideToggle();
        
     });

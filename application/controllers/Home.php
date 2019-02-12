@@ -13,6 +13,7 @@ class Home extends CI_Controller {
     public function index()
     {
         //get data from the database
+        session_destroy();
         $this->load->view('login');
         //load view and pass the data
     }
@@ -25,8 +26,7 @@ class Home extends CI_Controller {
         {  
             //declaring session  
             $this->session->set_userdata(array('user'=>$user));  
-            
-           $this->user_assesement();
+            $this->load->view('user_assesement');
         }  
         else{  
             $data['error'] = 'Your Account is Invalid';  
@@ -35,18 +35,8 @@ class Home extends CI_Controller {
     }
     public function logout()
     {
-        $this->session->unset_userdata('user');     
         $this->session->sess_destroy();
-        $this->load->view('login');  
+        redirect(set_url("index.php"));
         
-    }
-    public function histoy()
-    {
-        $history = $this->load->view('history', '', true);
-    }
-    public function user_assesement()
-    {
-        $this->load->view('user_assesement'); 
-        $assessment = $this->load->view('assessment', '', true);
     }
 }

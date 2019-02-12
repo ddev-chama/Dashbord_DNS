@@ -14,8 +14,7 @@
   </style>
   </head>
   <body>
-  <?php echo $this->session->userdata('user')?>
-
+  <?echo date('d-m-y');?>
     <div class="login-form">
       <form action="<?php echo site_url('Home/login'); ?>" method="post">
         <div class="top">
