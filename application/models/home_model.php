@@ -6,7 +6,7 @@ class home_model extends CI_Model {
         $this->load->database();
     }
     
-    public function get_member($u,$p)
+    public function get_member()
     {
        $this->db->select('*');
        $this->db->form('member');
@@ -20,4 +20,19 @@ class home_model extends CI_Model {
             return false;
         }
     }
+
+    function can_login($username, $password)  
+    {  
+         $this->db->where('user', $username);  
+         $this->db->where('password', $password);  
+         $query = $this->db->get('member');  
+         if($query->num_rows() > 0)  
+         {  
+              return true;  
+         }  
+         else  
+         {  
+              return false;       
+         }  
+    }  
 }

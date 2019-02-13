@@ -14,30 +14,29 @@
   </style>
   </head>
   <body>
-  <?php echo $this->session->userdata('user')?>
-
-    <div class="login-form">
-      <form action="<?php echo site_url('Home/login'); ?>" method="post">
-        <div class="top">
-          <img src="http://deltanetwork.co.th/pms/sources/img/DNS-login.png" alt="icon" width="50%">
-        </div>
-        <div class="form-area">
-          <div class="group">
-            <input name="user" type="text" class="form-control" placeholder="Username">
-            <span class="fas fa-user inside"></span>
-          </div>
-          <div class="group">
-            <input name="pass" type="password" class="form-control" placeholder="Password">
-            <span class="fas fa-key inside" inside></span>
-          </div>
-
-          <button type="submit" class="btn btn-default btn-block">LOGIN</button>
-        </div>
-      </form>
-
-    </div>
-
-
+  <?php echo validation_errors(); ?>
+  <?php echo $title ;?>
+  <div class="container">  
+           <br /><br /><br />  
+           <form method="post" action="<?php echo site_url('Home/login_validation'); ?>">  
+                <div class="form-group">  
+                     <label>Enter Username</label>  
+                     <input type="text" name="username" class="form-control" />  
+                     <span class="text-danger"><?php echo form_error('username'); ?></span>                 
+                </div>  
+                <div class="form-group">  
+                     <label>Enter Password</label>  
+                     <input type="password" name="password" class="form-control" />  
+                     <span class="text-danger"><?php echo form_error('password'); ?></span>  
+                </div>  
+                <div class="form-group">  
+                     <input type="submit" name="insert" value="Login" class="btn btn-info" />  
+                     <?php  
+                          echo '<label class="text-danger">'.$this->session->flashdata("error").'</label>';
+                      ?>  
+                </div>  
+           </form>  
+      </div>  
 
 </body>
 </html>
